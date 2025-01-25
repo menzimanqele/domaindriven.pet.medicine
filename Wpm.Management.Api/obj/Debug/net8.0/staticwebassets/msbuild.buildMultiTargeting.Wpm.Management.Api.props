@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/Wpm.Management.Api.props" />
-</Project>
