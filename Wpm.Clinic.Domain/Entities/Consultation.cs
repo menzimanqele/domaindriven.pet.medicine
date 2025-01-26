@@ -5,6 +5,7 @@ namespace Wpm.Clinic.Domain.Entities;
 
 public class Consultation : AggregateRoot
 {
+    private readonly List<DrugAdministration> _adminsterDrugs = new();
     public DateTime StartedAt { get; init; }
     public DateTime EndedAt { get; private set; }   
     public Text Diagnosis { get; private set; }
@@ -12,6 +13,7 @@ public class Consultation : AggregateRoot
     public PatientId PatientId { get; init; }
     public Weight CurrentWeight { get; private set; }
     public ConsultationStatus Status { get; set; }
+    public IReadOnlyCollection<DrugAdministration> AdministeredDrugs => _adminsterDrugs;
 
     public Consultation(PatientId patientId)
     {
@@ -32,7 +34,13 @@ public class Consultation : AggregateRoot
         Status = ConsultationStatus.Closed;
         EndedAt = DateTime.Now;
     }
-    
+
+    public void AdministerDrug(DrugId drugId, Dose dose)
+    {
+        ValidateConsultationStatus();  
+        var drugAdministration = new DrugAdministration(drugId, dose);
+        _adminsterDrugs.Add(drugAdministration);
+    }
 
     public void SetWeight(Weight weight)
     {
