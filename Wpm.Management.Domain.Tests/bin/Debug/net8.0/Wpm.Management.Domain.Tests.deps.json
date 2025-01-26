@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "17.8.0",
           "Wpm.Management.Domain": "1.0.0",
+          "Wpm.SharedKernel": "1.0.0",
           "coverlet.collector": "6.0.0",
           "xunit": "2.5.3",
           "xunit.runner.visualstudio": "2.5.3"
@@ -1022,8 +1023,16 @@
       },
       "xunit.runner.visualstudio/2.5.3": {},
       "Wpm.Management.Domain/1.0.0": {
+        "dependencies": {
+          "Wpm.SharedKernel": "1.0.0"
+        },
         "runtime": {
           "Wpm.Management.Domain.dll": {}
+        }
+      },
+      "Wpm.SharedKernel/1.0.0": {
+        "runtime": {
+          "Wpm.SharedKernel.dll": {}
         }
       }
     }
@@ -1658,6 +1667,11 @@
       "hashPath": "xunit.runner.visualstudio.2.5.3.nupkg.sha512"
     },
     "Wpm.Management.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Wpm.SharedKernel/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
