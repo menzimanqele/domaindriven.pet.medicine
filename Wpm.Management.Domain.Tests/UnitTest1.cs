@@ -90,7 +90,7 @@ public class UnitTest1
         var id = breedService.Breeds[0].Id;
         var breedId = new BreedId(id, breedService);
         var pet = new Pet(id, "Giann", 13, "Breed", SexOfPet.Male, breedId);
-        pet.SetWeight(new Weight(10.9m), breedService);
+        pet.SetWeight(10.9m, breedService);
         Assert.True(pet.WeightClass == WeightClass.Ideal);
     }
 
@@ -101,7 +101,7 @@ public class UnitTest1
         var id = breedService.Breeds[0].Id;
         var breedId = new BreedId(id, breedService);
         var pet = new Pet(id, "Giann", 13, "Breed", SexOfPet.Male, breedId);
-        pet.SetWeight(new Weight(8), breedService);
+        pet.SetWeight(8, breedService);
         Assert.True(pet.WeightClass == WeightClass.Underweight);
     }
 
