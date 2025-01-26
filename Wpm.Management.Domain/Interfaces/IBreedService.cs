@@ -13,7 +13,7 @@ public class FakeBreedService : IBreedService
     public readonly List<Breed> Breeds =
     [
         new Breed(Guid.NewGuid(), "Beagle", new WeightRange(10m, 20m), new WeightRange(11m, 18m)),
-        new Breed(Guid.NewGuid(), "Staffordshire Terrier", new WeightRange(208m, 20m), new WeightRange(11m, 18m)),
+        new Breed(Guid.NewGuid(), "Staffordshire Terrier", new WeightRange(20m, 50m), new WeightRange(24m, 34m)),
     ];
     
     
