@@ -1,9 +1,10 @@
-namespace Wpm.Management.Domain;
+namespace Wpm.Management.Domain.Entities;
 
 public class Breed : Entity
 {
-    public Breed(string name, WeightRange maleIdealWeight, WeightRange femaleIdealWeight)
+    public Breed(Guid id,string name, WeightRange maleIdealWeight, WeightRange femaleIdealWeight)
     {
+        Id = id;
         Name = name;
         MaleIdealWeight = maleIdealWeight;
         FemaleIdealWeight = femaleIdealWeight;
