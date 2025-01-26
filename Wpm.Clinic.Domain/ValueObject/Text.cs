@@ -1,4 +1,4 @@
-namespace Wpm.Clinc.Domain.ValueObject;
+namespace Wpm.Clinic.Domain.ValueObject;
 
 public record Text
 { 

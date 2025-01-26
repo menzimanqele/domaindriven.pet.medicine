@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Management.Domain", "Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Management.Domain.Tests", "Wpm.Management.Domain.Tests\Wpm.Management.Domain.Tests.csproj", "{4A9414FC-6C35-425B-AE14-C5CDED86D226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinc.Domain", "Wpm.Clinc.Domain\Wpm.Clinc.Domain.csproj", "{81121D0A-3C1D-4099-9FDD-8EEF94179E04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Domain", "Wpm.Clinic.Domain\Wpm.Clinic.Domain.csproj", "{81121D0A-3C1D-4099-9FDD-8EEF94179E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinc.Domain.Tests", "Wpm.Clinc.Domain.Tests\Wpm.Clinc.Domain.Tests.csproj", "{3F813904-9E17-482A-A2B2-885BFB5AE6D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Domain.Tests", "Wpm.Clinic.Domain.Tests\Wpm.Clinic.Domain.Tests.csproj", "{3F813904-9E17-482A-A2B2-885BFB5AE6D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinc.Api", "Wpm.Clinc.Api\Wpm.Clinc.Api.csproj", "{D07DCF7B-E6FA-49E3-929C-AAEF37E47E92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.Clinic.Api", "Wpm.Clinic.Api\Wpm.Clinic.Api.csproj", "{D07DCF7B-E6FA-49E3-929C-AAEF37E47E92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpm.SharedKernel", "Wpm.SharedKernel\Wpm.SharedKernel.csproj", "{B562ABE4-3078-4707-A265-8EAE473ADA5E}"
 EndProject
