@@ -17,7 +17,7 @@ public record Text
             throw new ArgumentException("Value cannot be null or empty.", nameof(value));
         }
 
-        if (value.Length < 500)
+        if (value.Length > 500)
         {
             throw new ArgumentException("Text is too large", nameof(value));
         }

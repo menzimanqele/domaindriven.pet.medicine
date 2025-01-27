@@ -8,7 +8,7 @@ public class Consultation : AggregateRoot
     private readonly List<DrugAdministration> _adminsterDrugs = new();
     public readonly List<VitalSigns> _VitalSigns = new();
     public DateTime StartedAt { get; init; }
-    public DateTime EndedAt { get; private set; }   
+    public DateTime? EndedAt { get; private set; }   
     public Text Diagnosis { get; private set; }
     public Text Treatment { get; private set; }
     public PatientId PatientId { get; init; }
@@ -51,6 +51,7 @@ public class Consultation : AggregateRoot
 
     public void SetWeight(Weight weight)
     {
+        ValidateConsultationStatus();
         this.CurrentWeight = weight;
     }
 
