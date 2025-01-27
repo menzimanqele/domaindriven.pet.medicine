@@ -15,12 +15,12 @@ public class Consultation : AggregateRoot
     public Weight CurrentWeight { get; private set; }
     public ConsultationStatus Status { get; set; }
     public IReadOnlyCollection<DrugAdministration> AdministeredDrugs => _adminsterDrugs;
-    public IReadOnlyCollection<VitalSigns> VitalSigns => _VitalSigns; 
+    public IReadOnlyCollection<VitalSigns> VitalSignsReading => _VitalSigns; 
 
     public Consultation(PatientId patientId)
     {
         Id = Guid.NewGuid();
-        this.PatientId = patientId;
+        PatientId = patientId;
         Status = ConsultationStatus.Open;
         StartedAt = DateTime.Now;
     }
@@ -73,7 +73,12 @@ public class Consultation : AggregateRoot
             throw new InvalidOperationException("Consultation is closed");  
         }
     }
-    
+
+    public void RegisterVitalSigns(IEnumerable<VitalSigns> vitalSigns)
+    {
+        ValidateConsultationStatus();
+        _VitalSigns.AddRange(vitalSigns);
+    }
 }
 
 public enum ConsultationStatus
