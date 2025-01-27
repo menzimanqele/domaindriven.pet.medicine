@@ -7,6 +7,16 @@ public record BreedId
     private readonly IBreedService _breedService;
     public Guid Value { get; set; }
 
+    private BreedId(Guid value)
+    {
+        Value = value;
+    }
+
+    public static BreedId Create(Guid value)
+    {
+        return new (value);
+    }
+
     public BreedId(Guid value, IBreedService breedService)
     {
         _breedService = breedService;

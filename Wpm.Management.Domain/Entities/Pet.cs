@@ -19,7 +19,7 @@ public class Pet :Entity
     public string Name { get; set; }
     public int Age { get; set; }
     public string Color { get; set; }
-    public Weight Weight { get;private set; }
+    public Weight? Weight { get;private set; }
     public SexOfPet SexOfPet { get; set; }
     public BreedId BreedId { get; set; }
     public WeightClass WeightClass { get; private set; }    
