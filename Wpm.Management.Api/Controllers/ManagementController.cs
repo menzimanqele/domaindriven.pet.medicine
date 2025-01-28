@@ -1,15 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Wpm.Management.Api.Application;
+using Wpm.Management.Api.Infrastructure;
 
 namespace Wpm.Management.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ManagementController : ControllerBase
+public class ManagementController(ManagementApplicationService managementApplicationService, ManagementDbContext dbContext) : ControllerBase
 {
    [HttpPost]
    public async Task<ActionResult> Post(CreatePetCommand command)
    {
-      return null;
+      await managementApplicationService.Handle(command);
+      return Ok();
    }
 }

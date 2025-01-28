@@ -1,10 +1,11 @@
+using Wpm.Management.Api.Infrastructure;
 using Wpm.Management.Domain.Entities;
 using Wpm.Management.Domain.Interfaces;
 using Wpm.Management.Domain.ValueObjects;
 
 namespace Wpm.Management.Api.Application;
 
-public class ManagementApplicationService(IBreedService breedService)
+public class ManagementApplicationService(IBreedService breedService, ManagementDbContext dbContext)
 {
     public async Task Handle(CreatePetCommand command)
     {
@@ -14,6 +15,9 @@ public class ManagementApplicationService(IBreedService breedService)
                     command.age,
                     command.color,
                     command.SexOfPet,
-                    null);
+                     breedId);
+
+        dbContext.Pets.AddAsync(newPet);
+        dbContext.SaveChangesAsync();
     }
 }
