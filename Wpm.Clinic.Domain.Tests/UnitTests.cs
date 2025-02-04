@@ -1,5 +1,5 @@
 using Wpm.Clinic.Domain.Entities;
-using Wpm.Clinic.Domain.ValueObject;
+using Wpm.Clinic.Domain.ValueObjects;
 using Xunit;
 
 namespace Wpm.Clinic.Domain.Tests;
@@ -86,9 +86,9 @@ public class UnitTests
     public void Consultation_should_register_vitalsigns()
     {
         var c = new Consultation(Guid.NewGuid());
-        IEnumerable<VitalSigns> vitalSigns = [new VitalSigns(38.8m, 100, 120)];
+        IEnumerable<VitalSigns> vitalSigns = [new VitalSigns(DateTime.UtcNow, 38.8m, 100, 120)];
         c.RegisterVitalSigns(vitalSigns);
-        Assert.True(c.VitalSignsReading.Count == 1);
-        Assert.True(c.VitalSignsReading.First() == vitalSigns.First());
+        Assert.True(c.VitalSignReadings.Count == 1);
+        Assert.True(c.VitalSignReadings.First() == vitalSigns.First());
     }
 }

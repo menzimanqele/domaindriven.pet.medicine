@@ -1,4 +1,4 @@
-using Wpm.Clinic.Domain.ValueObject;
+using Wpm.Clinic.Domain.ValueObjects;
 using Wpm.SharedKernel;
 
 namespace Wpm.Clinic.Domain.Entities;
