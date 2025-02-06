@@ -1,3 +1,4 @@
+using Wpm.Management.Domain.Events;
 using Wpm.Management.Domain.Interfaces;
 using Wpm.Management.Domain.ValueObjects;
 using Wpm.SharedKernel;
@@ -53,6 +54,7 @@ public class Pet :Entity
     {
         Weight = weight;
         SetWeightClass(breedService);
+        DomainEvents.PetWeightUpdated.Publish(new PetWeightUpdated(Id, weight));
     }
 }
 
