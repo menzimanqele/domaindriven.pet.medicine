@@ -17,7 +17,7 @@ public class UnitTests
     public void Consultation_Should_Be_Not_Have_Ended_Timestamp()
     {
         var consultation = new Consultation(Guid.NewGuid());
-        Assert.Null(consultation.EndedAt);
+        Assert.Null(consultation.When.EndedAt);
     }
 
     [Fact]

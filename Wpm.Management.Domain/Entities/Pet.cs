@@ -26,7 +26,7 @@ public class Pet :Entity
     public WeightClass WeightClass { get; private set; }    
     public Pet(Guid id)
     {
-        
+        Id = id;
     }
 
     public void SetWeightClass(IBreedService breedService)
@@ -52,6 +52,14 @@ public class Pet :Entity
 
     public void SetWeight(Weight weight, IBreedService breedService)
     {
+        Weight = weight;
+        SetWeightClass(breedService);
+        DomainEvents.PetWeightUpdated.Publish(new PetWeightUpdated(Id, weight));
+    }
+    
+    public void SetWeight(Guid id,Weight weight, IBreedService breedService)
+    {
+        Id = id;
         Weight = weight;
         SetWeightClass(breedService);
         DomainEvents.PetWeightUpdated.Publish(new PetWeightUpdated(Id, weight));
