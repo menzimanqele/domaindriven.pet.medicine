@@ -23,5 +23,6 @@ public record Text
         }
     }
     
-    public static implicit operator Text(string vale) => new Text(vale);
+    public static implicit operator Text(string vale) => new(vale);
+    public static implicit operator string(Text value) => value.Value;
 }
