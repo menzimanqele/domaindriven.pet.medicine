@@ -1,8 +1,10 @@
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Wpm.Clinic.Api.Commands;
 using Wpm.Clinic.Api.Infrastructure;
 using Wpm.Clinic.Domain.Entities;
 using Wpm.Clinic.Domain.ValueObjects;
+using Wpm.SharedKernel;
 
 namespace Wpm.Clinic.Api.Application;
 
@@ -26,9 +28,9 @@ public class ClinicApplicationService(ClinicDbContext dbContext)
 
     public async Task Handle(SetDiagnosisCommand command)
     {
-        var consultation = await dbContext.Consultations.FindAsync(command.ConsultationId);
-        /*consultation.SetDiagnosis(command.Diagnosis);*/
-        await dbContext.SaveChangesAsync();
+       var consultation = await LoadAsync(command.ConsultationId);
+       consultation.SetDiagnosis(command.Diagnosis);
+       await SaveAsync(consultation);
     }
 
     public async Task Handle(SetTreatmentCommand command)
@@ -83,5 +85,22 @@ public class ClinicApplicationService(ClinicDbContext dbContext)
         }
         await dbContext.SaveChangesAsync();
         consultation.ClearChanges();
+    }
+
+    public async Task<Consultation> LoadAsync(Guid consultationId)
+    {
+        var agregateId = $"Consultation-{consultationId}";
+        var results = await dbContext.Consultations.Where(x => x.AggregateId == agregateId).ToListAsync();
+
+        var domainEvents = results.Select(e =>
+        {
+            var assemblyQualifiedName = e.GetType().AssemblyQualifiedName;
+            var eventType = Type.GetType(assemblyQualifiedName);
+            var data = JsonConvert.DeserializeObject(e.Data, eventType!);
+            return e as IDomainEvents;
+        });
+        
+        var aggregate = new Consultation(domainEvents);
+        return aggregate;
     }
 }

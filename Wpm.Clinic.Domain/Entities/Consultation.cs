@@ -28,6 +28,11 @@ public class Consultation : AggregateRoot
         
         ApplyDomainEvent(new ConsultationStarted(Guid.NewGuid(), patientId,DateTime.UtcNow));
     }
+
+    public Consultation(IEnumerable<IDomainEvents> domainEvents)
+    {
+        Load(domainEvents);
+    }
     public void RegisterVitalSigns(IEnumerable<VitalSigns> vitalSigns)
     {
         ValidateConsultationStatus();
